@@ -1,0 +1,104 @@
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimplePlus}
+
+\usepackage{hyperref}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Mathematical Foundations \\ of Reinforcement Learning}
+\subtitle{Chapter 1: Basic Concepts}
+
+\author{Minseok Seo}
+
+\institute
+{
+    Artificial Intelligence Graduate School \\
+    Gwangju Institute of Science and Technology (GIST) % Your institution for the title page
+}
+\date{\today} % Date, can be changed to a custom date
+
+%----------------------------------------------------------------------------------------
+%    PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{frame}
+    % Print the title page as the first slide
+    \titlepage
+\end{frame}
+
+\begin{frame}{Overview}
+    % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------
+\section{Markov Decision Process (MDPs)}
+%------------------------------------------------
+
+\begin{frame}{Markov Decision Process (MDPs)}
+    
+Sets:
+\begin{itemize}
+	\item State space: the set of all states, denoted as $\mathcal{S}$.
+	\item Action space: a set of actions, denoted as $\mathcal{A}(s)$, associated with each state $s \in \mathcal{S}$.
+	\item Reward set: a set of rewards, denoted as $\mathcal{R}(s, a)$, associated with each state-action pair $(s, a)$.
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Markov Decision Process (MDPs)}
+
+Models:
+\begin{itemize}
+	\item State transition probability: \\
+	In state $s$, when taking action $a$, the probability of transitioning to state $s'$ is $p(s'|s, a)$. \\
+	It holds that $\sum_{s' \in \mathcal{S}} p(s'|s, a) = 1$ for any $(s, a)$.
+	\item Reward probability: \\
+	In state $s$, when taking action $a$, the probability of obtaining reward $r$ is $p(r|s, a)$. \\
+	It holds that $\sum_{r \in \mathcal{R}(s, a)} p(r|s, a) = 1$ for any $(s, a)$.
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Markov Decision Process (MDPs)}
+
+Policy:
+\begin{itemize}
+	\item In state $s$, the probability of choosing action $a$ is $\pi(a|s)$.
+	\item It holds that $\sum_{a \in \mathcal{A}(s)} \pi(a|s) = 1$ for any $s \in \mathcal{S}$.
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Markov Decision Process (MDPs)}
+
+Markov property: \\
+The Markov property refers to the memoryless property of a stochastic process.
+Mathematically, it means that
+\begin{equation} \label{eq:markov_property}
+	\begin{aligned}
+		p(s_{t + 1} | s_t, a_t, s_{t - 1}, a_{t - 1}, \cdots, s_0, a_0) &= p(s_{t + 1} | s_t, a_t) \\
+		p(r_{t + 1} | s_t, a_t, s_{t - 1}, a_{t - 1}, \cdots, s_0, a_0) &= p(r_{t + 1} | s_t, a_t)
+	\end{aligned}
+\end{equation}
+Eq. \eqref{eq:markov_property} indicates that the next state or reward depends merely on the current state and action and is independet of the previous ones.
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+\end{document}
